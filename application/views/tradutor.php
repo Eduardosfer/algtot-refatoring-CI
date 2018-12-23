@@ -67,7 +67,7 @@ $codigoTraduzido = $tradutor->getCodigoTraduzido();
             
             if($_SESSION['cdGrupo']==3){
                 //MENU DE ALUNO
-                include_once ("includs/menuAluno.php"); 
+                include_once("includs/menuAluno.php"); 
             }
         ?>
 

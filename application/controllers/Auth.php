@@ -18,7 +18,12 @@ class Auth extends CI_Controller {
 
 	public function autenticar() {
 		if ($this->verificarLogado() === true) {
-			//Verifica as permissões
+			$controller = strtolower($this->router->class);
+			if ($controller != 'auth' && $controller != null) {
+				//
+			} else {				
+				$this->mostrarTelaApresentacao();
+			}
 		} else {
 			$this->mostrarTelaApresentacao();
 		}

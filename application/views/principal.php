@@ -190,8 +190,8 @@
   <!-- Bootstrap -->
   <body>
 
-    <!-- MENU DOS ALUNO -->
-    <?php include_once ("includs/menuAluno.php"); ?>
+    <!-- MENU DO ALUNO -->
+    <?php include_once("includs/menuAluno.php"); ?>
 
     <!--MODAL DE VISUALIZAÇÃO E EDIÇÃO DE DADOS-->
     <?php include_once("includs/modalVerEditarPerfil.php"); ?>
