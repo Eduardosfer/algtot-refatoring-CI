@@ -14,8 +14,11 @@ class AlgTot extends MY_Controller {
 
 	public function index() {
 		$cdGrupo = $this->session->userdata('cdGrupo');
-		echo 'Chegou aqui mano';
-		die;
+		echo "Chegou véio";
 	}	
+
+	public function teste() {
+		//
+	}
 	
 }

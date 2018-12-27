@@ -26,13 +26,13 @@ class MY_Controller extends CI_Controller {
 		if ($this->verificarLogado() === true) {
 			$controller = strtolower($this->router->class);
 			if ($controller != 'inicio' && $controller != null) {
-				$method = strtolower($this->router->method);
-				if ($this->checkPermissao($controller, $method) === false) {
+				$method = strtolower($this->router->method);				
+				if ($this->checkPermissao($controller, $method) === false) {					
 					//VOLTAR A PÁGINA ANTERIOR E INFORMAR QUE AO USUÁRIO QUE NÃO TEM PERMISSÃO PARA ACESSAR $controller/$method
-					$this->util->setModalRedirecionar('Aviso de permissão', 'Você não tem permissão para acessar '.$controller.'/'.$method, '', 'meuModalErro', $this->urlBack);
-					//DESENVOLVER UMA FUNÇÃO QUE PEGA A PÁGINA ANTERIOR					
+					$this->urlBack = $this->util->getUrlBack();					
+					$this->util->setModalRedirect('Aviso de permissão', 'Você não tem permissão para acessar '.$controller.'/'.$method, '', 'meuModalErro', $this->urlBack);
 				} else {
-					//TEM PERMISSÃO E POR ISSO PODE USAR O CONTROLE E METODO NORMALMENTE
+					//TEM PERMISSÃO E POR ISSO PODE USAR O CONTROLE E METODO NORMALMENTE										
 					return true;
 				}
 			} else {				

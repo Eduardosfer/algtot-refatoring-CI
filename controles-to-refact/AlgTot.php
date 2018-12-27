@@ -117,12 +117,12 @@ Class AlgTot {
             }
 
             if ($_SESSION['cdGrupo'] == 1) {                
-                $this->setModalRedirecionar('', $mensagem, '', $meuModal, '../visao/atividadesADM.php');
+                $this->setModalRedirect('', $mensagem, '', $meuModal, '../visao/atividadesADM.php');
                 return true;
             }
 
             if ($_SESSION['cdGrupo'] == 2) {                
-                $this->setModalRedirecionar('', $mensagem, '', $meuModal, '../visao/atividadesProfessor.php');
+                $this->setModalRedirect('', $mensagem, '', $meuModal, '../visao/atividadesProfessor.php');
                 return true;
             }
         }
@@ -207,19 +207,19 @@ Class AlgTot {
             }
             
             if ($sucesso == 0 && $erro == 0) {
-                $this->setModalRedirecionar('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $url);
+                $this->setModalRedirect('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $url);
                 return true;
             } else {
                 if ($sucesso > 0 && $erro > 0) {
-                    $this->setModalRedirecionar('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $url);
+                    $this->setModalRedirect('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $url);
                     return false;
                 }                
                 if ($sucesso > 0 && $erro == 0) {
-                    $this->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', $url);
+                    $this->setModalRedirect('', $mensagem, '', 'meuModalSucesso', $url);
                     return true;
                 }                
                 if ($sucesso == 0 && $erro > 0) {
-                    $this->setModalRedirecionar('', $mensagem, '', 'meuModalErro', $url);
+                    $this->setModalRedirect('', $mensagem, '', 'meuModalErro', $url);
                     return false;
                 }                
             }  
@@ -274,11 +274,11 @@ Class AlgTot {
             }
 
             if ($_SESSION['cdGrupo'] == 1) {
-                $this->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', '../visao/atividadesADM.php');                
+                $this->setModalRedirect('', $mensagem, '', 'meuModalSucesso', '../visao/atividadesADM.php');                
             }
 
             if ($_SESSION['cdGrupo'] == 2) {                
-                $this->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', '../visao/atividadesProfessor.php');
+                $this->setModalRedirect('', $mensagem, '', 'meuModalSucesso', '../visao/atividadesProfessor.php');
             }
         }
     }
@@ -340,11 +340,11 @@ Class AlgTot {
             }
 
             if ($_SESSION['cdGrupo'] == 1) {                
-                $this->setModalRedirecionar('', $mensagem, '', $meuModal, '../visao/questaoADM.php');
+                $this->setModalRedirect('', $mensagem, '', $meuModal, '../visao/questaoADM.php');
             }
 
             if ($_SESSION['cdGrupo'] == 2) {
-                $this->setModalRedirecionar('', $mensagem, '', $meuModal, '../visao/questaoProfessor.php');                
+                $this->setModalRedirect('', $mensagem, '', $meuModal, '../visao/questaoProfessor.php');                
             }
         }
     }
@@ -399,11 +399,11 @@ Class AlgTot {
             }
 
             if ($_SESSION['cdGrupo'] == 1) {                
-                $this->setModalRedirecionar('', $mensagem, '', $meuModal, '../visao/questaoADM.php');
+                $this->setModalRedirect('', $mensagem, '', $meuModal, '../visao/questaoADM.php');
             }
 
             if ($_SESSION['cdGrupo'] == 2) {
-                $this->setModalRedirecionar('', $mensagem, '', $meuModal, '../visao/questaoProfessor.php');              
+                $this->setModalRedirect('', $mensagem, '', $meuModal, '../visao/questaoProfessor.php');              
             }
         }
     }
@@ -570,19 +570,19 @@ Class AlgTot {
             }
             
             if ($sucesso == 0 && $erro == 0) {
-                $this->setModalRedirecionar('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $url);
+                $this->setModalRedirect('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $url);
                 return true;
             } else {
                 if ($sucesso > 0 && $erro > 0) {
-                    $this->setModalRedirecionar('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $url);
+                    $this->setModalRedirect('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $url);
                     return false;
                 }                
                 if ($sucesso > 0 && $erro == 0) {
-                    $this->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', $url);
+                    $this->setModalRedirect('', $mensagem, '', 'meuModalSucesso', $url);
                     return true;
                 }                
                 if ($sucesso == 0 && $erro > 0) {
-                    $this->setModalRedirecionar('', $mensagem, '', 'meuModalErro', $url);
+                    $this->setModalRedirect('', $mensagem, '', 'meuModalErro', $url);
                     return false;
                 }                
             }
@@ -613,11 +613,11 @@ Class AlgTot {
             }
             
             if ($_SESSION['cdGrupo'] == 1) {
-                $this->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', '../visao/questaoADM.php');                
+                $this->setModalRedirect('', $mensagem, '', 'meuModalSucesso', '../visao/questaoADM.php');                
             }
 
             if ($_SESSION['cdGrupo'] == 2) {                
-                $this->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', '../visao/questaoProfessor.php');
+                $this->setModalRedirect('', $mensagem, '', 'meuModalSucesso', '../visao/questaoProfessor.php');
             }                       
         }
     }
@@ -1281,7 +1281,7 @@ Class AlgTot {
         return $resultado;
     }
 
-    public function setModalRedirecionar($header = null, $body = null, $footer = null, $meuModal = null, $url = "../index.php") {
+    public function setModalRedirect($header = null, $body = null, $footer = null, $meuModal = null, $url = "../index.php") {
         session_start();
         $_SESSION['modal'] = $meuModal;
         $_SESSION['header'] = $header;

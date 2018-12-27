@@ -138,18 +138,18 @@ Class Usuario {
                         $update = "UPDATE usuario SET primeiroLogin = ? WHERE cdUsuario = ?";
                         $dados = array('nao', $_SESSION['cdUsuario']);
                         $this->modelo->alterar($update, $dados);
-                        $this->AlgTot->setModalRedirecionar('Bem vindo ao Algtot '.$_SESSION['usuario'].'!','Muito obrigado por participar do Algtot, aqui você poderá competir com outras pessoas no mundo da lógica e programação.<br>Você receberá <b>100</b> pontos de bonificação para começar.<br>Boa sorte e bom jogo.','','meuModalSucesso', $urlBack);
+                        $this->AlgTot->setModalRedirect('Bem vindo ao Algtot '.$_SESSION['usuario'].'!','Muito obrigado por participar do Algtot, aqui você poderá competir com outras pessoas no mundo da lógica e programação.<br>Você receberá <b>100</b> pontos de bonificação para começar.<br>Boa sorte e bom jogo.','','meuModalSucesso', $urlBack);
                     } else {
-                        $this->AlgTot->setModalRedirecionar('','','','', $urlBack);
+                        $this->AlgTot->setModalRedirect('','','','', $urlBack);
                     }
                     
                 } else {
-                    $this->AlgTot->setModalRedirecionar('Usuário ainda não liberado', 'Você ainda não tem acesso ao Algtot, aguarde a liberação de acesso do seu usuário.<br>Isso pode levar algum tempo...', '', 'meuModalErro', '../index.php');
+                    $this->AlgTot->setModalRedirect('Usuário ainda não liberado', 'Você ainda não tem acesso ao Algtot, aguarde a liberação de acesso do seu usuário.<br>Isso pode levar algum tempo...', '', 'meuModalErro', '../index.php');
                 }
                                 
                 
             } else {
-                $this->AlgTot->setModalRedirecionar('', 'Usuário ou senha incorretos.', '', 'meuModalErro', '../index.php');
+                $this->AlgTot->setModalRedirect('', 'Usuário ou senha incorretos.', '', 'meuModalErro', '../index.php');
             }
         }
     }
@@ -260,7 +260,7 @@ Class Usuario {
                         $dados = array($this->usuario, $this->senha, $this->email, $this->cdGrupo, $this->status, 100, 0, 0, 0, 0, 100, $this->nomeCompleto, $this->instituicao, $this->curso, 'sim');
                         $this->modelo->cadastrar($insert, $dados);
 
-                        $this->AlgTot->setModalRedirecionar('', 'Usuário cadastrado com sucesso.', '', 'meuModalSucesso', $urlBack);
+                        $this->AlgTot->setModalRedirect('', 'Usuário cadastrado com sucesso.', '', 'meuModalSucesso', $urlBack);
                         return true;
                     } else {
                         $mensagem = $mensagem . 'Este e-mail já foi cadastrado para um usuário, tente utiliza outro e-mail!\n';
@@ -269,9 +269,9 @@ Class Usuario {
                     $mensagem = $mensagem . 'Este usuário já foi cadastrado, tente outro nome de usuário!\n';
                 }
                                 
-                $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalErro', $urlBack);                               
+                $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalErro', $urlBack);                               
             } else {                               
-                $this->AlgTot->setModalRedirecionar('', 'Erro ao cadastrar', '', 'meuModalErro', $urlBack);               
+                $this->AlgTot->setModalRedirect('', 'Erro ao cadastrar', '', 'meuModalErro', $urlBack);               
             }
         }
 
@@ -306,7 +306,7 @@ Class Usuario {
                         $this->modelo->cadastrar($insert, $dados);
 
                         $mensagem = $mensagem . 'Usuário cadastrado com sucesso!<br>Em breve estaremos liberando o seu acesso ao Algtot.';
-                        $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', '../index.php');
+                        $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalSucesso', '../index.php');
                         return true;
                     } else {
 
@@ -316,9 +316,9 @@ Class Usuario {
                     $mensagem = $mensagem . 'Este usuário já foi cadastrado, tente outro nome de usuário!<br>';
                 }
 
-                $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalErro', '../index.php');
+                $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalErro', '../index.php');
             } else {
-                $this->AlgTot->setModalRedirecionar('', 'Erro ao cadastrar a sua conta.', '', 'meuModalErro', '../index.php');
+                $this->AlgTot->setModalRedirect('', 'Erro ao cadastrar a sua conta.', '', 'meuModalErro', '../index.php');
             }
         }
     }
@@ -453,19 +453,19 @@ Class Usuario {
             }            
             
             if ($sucesso == 0 && $erro == 0) {
-                $this->AlgTot->setModalRedirecionar('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $paginaAnterior);
+                $this->AlgTot->setModalRedirect('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $paginaAnterior);
                 return true;
             } else {
                 if ($sucesso > 0 && $erro > 0) {
-                    $this->AlgTot->setModalRedirecionar('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $paginaAnterior);
+                    $this->AlgTot->setModalRedirect('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $paginaAnterior);
                     return false;
                 }                
                 if ($sucesso > 0 && $erro == 0) {
-                    $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', $paginaAnterior);
+                    $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalSucesso', $paginaAnterior);
                     return true;
                 }                
                 if ($sucesso == 0 && $erro > 0) {
-                    $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalErro', $paginaAnterior);
+                    $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalErro', $paginaAnterior);
                     return false;
                 }                
             }
@@ -589,19 +589,19 @@ Class Usuario {
             }
             
             if ($sucesso == 0 && $erro == 0) {                
-                $this->AlgTot->setModalRedirecionar('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $urlBack);
+                $this->AlgTot->setModalRedirect('Nenhuma alteração', 'Nada alterado.', '', 'meuModalSucesso', $urlBack);
                 return true;
             } else {
                 if ($sucesso > 0 && $erro > 0) {
-                    $this->AlgTot->setModalRedirecionar('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $urlBack);
+                    $this->AlgTot->setModalRedirect('Nem todos os dados puderam ser alterados!', $mensagem, '', 'meuModalErro', $urlBack);
                     return false;
                 }                
                 if ($sucesso > 0 && $erro == 0) {
-                    $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalSucesso', $urlBack);
+                    $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalSucesso', $urlBack);
                     return true;
                 }                
                 if ($sucesso == 0 && $erro > 0) {
-                    $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalErro', $urlBack);
+                    $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalErro', $urlBack);
                     return false;
                 }                
             }            
@@ -672,7 +672,7 @@ Class Usuario {
                 $dados = array('deletado', $this->cdUsuario);
                 $this->modelo->excluir($update, $dados);
                 session_destroy();
-                $this->AlgTot->setModalRedirecionar('Conta excluida.', 'Sua conta foi excluída!', '', 'meuModalErro', '../index.php');
+                $this->AlgTot->setModalRedirect('Conta excluida.', 'Sua conta foi excluída!', '', 'meuModalErro', '../index.php');
             } else {
                 $mensagem = "Senha incorreta!";
                 //REDIRECIONANDO PARA A PÁGINA QUE O USUÁRIO ESTAVA ANTERIORMENTE
@@ -682,10 +682,10 @@ Class Usuario {
                 } else {
                    $paginaAnterior = '../index.php';
                 }
-                $this->AlgTot->setModalRedirecionar('', $mensagem, '', 'meuModalErro', $paginaAnterior);
+                $this->AlgTot->setModalRedirect('', $mensagem, '', 'meuModalErro', $paginaAnterior);
             }
         } else {
-            $this->AlgTot->setModalRedirecionar('', '', '', '', '../index.php');
+            $this->AlgTot->setModalRedirect('', '', '', '', '../index.php');
         }
     }
 
@@ -709,9 +709,9 @@ Class Usuario {
             $update = "UPDATE usuario SET status = ? WHERE cdUsuario = ?";
             $dados = array('deletado', $usuarioExcluir);
             $this->modelo->excluir($update, $dados);
-            $this->AlgTot->setModalRedirecionar('', 'Conta foi excluída com êxito!', '', 'meuModalSucesso', $urlBack);
+            $this->AlgTot->setModalRedirect('', 'Conta foi excluída com êxito!', '', 'meuModalSucesso', $urlBack);
         } else {
-            $this->AlgTot->setModalRedirecionar('', 'Ocorreu algun erro ao tentar excluir esse usuário.', '', 'meuModalErro', $urlBack);
+            $this->AlgTot->setModalRedirect('', 'Ocorreu algun erro ao tentar excluir esse usuário.', '', 'meuModalErro', $urlBack);
         }
     }
 
@@ -756,15 +756,15 @@ Class Usuario {
 
                   if (mail($para, $assunto, $mensagem, $headers) == true) {
 
-                 * $this->AlgTot->setModalRedirecionar('Email enviado', 'Uma mensagem foi enviada para sua caixa de e-mail.', '', 'meuModalSucesso', '../index.php');
+                 * $this->AlgTot->setModalRedirect('Email enviado', 'Uma mensagem foi enviada para sua caixa de e-mail.', '', 'meuModalSucesso', '../index.php');
                   } else {
 
-                 * $this->AlgTot->setModalRedirecionar('Email não enviado', 'Não foi possivel enviar o e-mail, tente novamente!', '', 'meuModalErro', '../index.php');
+                 * $this->AlgTot->setModalRedirect('Email não enviado', 'Não foi possivel enviar o e-mail, tente novamente!', '', 'meuModalErro', '../index.php');
                   } */
 
-                $this->AlgTot->setModalRedirecionar('Ainda não disponível!', 'Este serviço ainda não está funcionando!<br>Envie um e-mail para algtot@outlook.com.br solicitando a sua senha<br>Você deve utilizar o e-mail que está vinculado com o seu usuário do AlgTot!', '', 'meuModalErro', '../index.php');
+                $this->AlgTot->setModalRedirect('Ainda não disponível!', 'Este serviço ainda não está funcionando!<br>Envie um e-mail para algtot@outlook.com.br solicitando a sua senha<br>Você deve utilizar o e-mail que está vinculado com o seu usuário do AlgTot!', '', 'meuModalErro', '../index.php');
             } else {
-                $this->AlgTot->setModalRedirecionar('', 'Usuário inválido!<br>O usuário <b>' . $this->usuario . '</b> não foi encontrado.', '', 'meuModalErro', '../index.php');
+                $this->AlgTot->setModalRedirect('', 'Usuário inválido!<br>O usuário <b>' . $this->usuario . '</b> não foi encontrado.', '', 'meuModalErro', '../index.php');
             }
         }
     }

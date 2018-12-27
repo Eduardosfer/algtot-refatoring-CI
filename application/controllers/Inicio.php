@@ -41,9 +41,9 @@ class Inicio extends MY_Controller {
 			$post['senha'] = md5($post['senha']);
 			$post['status'] = 'inativo'; //inativo, pois é preciso que o cadastro seja aceito por um gestor
 			$this->UsuarioModel->insertData($post);
-			$this->util->setModalRedirecionar('', 'Cadastrado efetuado com sucesso!', '', 'meuModalSucesso', $this->urlBack);
+			$this->util->setModalRedirect('', 'Cadastrado efetuado com sucesso!', '', 'meuModalSucesso', $this->urlBack);
 		} else {			
-			$this->util->setModalRedirecionar('', $this->mensagem, '', 'meuModalErro', $this->urlBack);
+			$this->util->setModalRedirect('', $this->mensagem, '', 'meuModalErro', $this->urlBack);
 		}
 	}	
 
@@ -53,17 +53,17 @@ class Inicio extends MY_Controller {
 		$where = array('usuario' => $post['usuario'], 'senha' => md5($post['senha']), 'status !=' => 'deletado');
 		$usuario = $this->UsuarioModel->getOneData($where);
 		if (!isset($usuario->status)) {
-			$this->util->setModalRedirecionar('', 'Usuário ou senha invalidos.', '', 'meuModalErro', $this->urlBack);
+			$this->util->setModalRedirect('', 'Usuário ou senha invalidos.', '', 'meuModalErro', $this->urlBack);
 		} else {			
 			if ($usuario->status == 'inativo' || $usuario->status == null) {
-				$this->util->setModalRedirecionar('Usuário ainda não liberado', 'Você ainda não tem acesso ao Algtot, aguarde a liberação de acesso do seu usuário.', '', 'meuModalErro', $this->urlBack);
+				$this->util->setModalRedirect('Usuário ainda não liberado', 'Você ainda não tem acesso ao Algtot, aguarde a liberação de acesso do seu usuário.', '', 'meuModalErro', $this->urlBack);
 			}
 			if ($usuario->status == 'ativo') {
 				if ($usuario->primeiroLogin == 'sim' && $usuario->cdGrupo == 3) {
 					$this->UsuarioModel->updateData(array('primeiroLogin' => 'nao'), array('cdUsuario' => $usuario->cdUsuario));                    										
 					$usuario->primeiroLogin = 'nao';
 					$this->criarSessaoUsuario($usuario);					
-					$this->util->setModalRedirecionar('Bem vindo ao Algtot '.$usuario->usuario.'!','Muito obrigado por participar do Algtot, aqui você poderá competir com outras pessoas no mundo da lógica e programação.<br>Você receberá <b>100</b> pontos de bonificação para começar.<br>Boa sorte e bom jogo.','','meuModalSucesso', $this->urlBack);
+					$this->util->setModalRedirect('Bem vindo ao Algtot '.$usuario->usuario.'!','Muito obrigado por participar do Algtot, aqui você poderá competir com outras pessoas no mundo da lógica e programação.<br>Você receberá <b>100</b> pontos de bonificação para começar.<br>Boa sorte e bom jogo.','','meuModalSucesso', $this->urlBack);
 				} else {
 					$this->criarSessaoUsuario($usuario);
 					redirect('AlgTot');
