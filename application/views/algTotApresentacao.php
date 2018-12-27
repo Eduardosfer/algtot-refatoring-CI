@@ -96,7 +96,7 @@
                     </div>
 
                     <!--Inicio do formulario de envio de usuario e senha-->
-                    <form name="login" action="../controle/Usuario.php" method="post" class="form-horizontal">
+                    <form name="login" action="Inicio/logar" method="post" class="form-horizontal">
 
                         <div class="modal-body">
 
@@ -115,7 +115,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <a name="acao" value="Logar" data-toggle="modal" data-target="#recuperarSenha" class="btn btn-defult">Recuperar Senha</a>
+                            <a name="acao" value="Logar" title="Disponível em breve" data-toggle="modal" data-target="#" class="btn btn-defult">Recuperar Senha</a>
                             <button name="acao" type="submit" value="Logar" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Entrar</button>
                         </div>
 
@@ -141,7 +141,7 @@
                     </div>
 
                     <!--Inicio do formulario de envio de usuario para recuperar a senha-->
-                    <form name="recuperarSenha" action="../controle/Usuario.php" method="post" class="form-horizontal">
+                    <form name="recuperarSenha" action="" method="post" class="form-horizontal">
 
                         <div class="modal-body">
 
@@ -177,7 +177,7 @@
                     </div>
 
                     <!--Inicio do formulario de cadastro de usuario no sistema-->
-                    <form name="cadastrarUsuario" id="cadastrarUsuario" action="../controle/Usuario.php" method="post">
+                    <form name="cadastrarUsuario" id="cadastrarUsuario" action="Inicio/autoCadastrar" method="post">
 
                         <div class="modal-body">
                             

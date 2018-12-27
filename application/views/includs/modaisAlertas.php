@@ -43,21 +43,8 @@
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 
-<script>        
-    <?php  
-        $modal = isset($_SESSION['modal'])?$_SESSION['modal']:null;
-        if ($modal != null || $modal != '') {            
-            $header = isset($_SESSION['header'])?$_SESSION['header']:null;
-            $body = isset($_SESSION['body'])?$_SESSION['body']:null;
-            $footer = isset($_SESSION['footer'])?$_SESSION['footer']:null;            
-            $_SESSION['modal'] = null;
-            $_SESSION['header'] = null;
-            $_SESSION['body'] = null;
-            $_SESSION['footer'] = null;
-    ?>        
-        chamarModal('<?php echo $header ?>', '<?php echo $body ?>', '<?php echo $footer ?>', '<?php echo $modal ?>');      
-    <?php } ?>
-        
+<script>            
+
     function chamarModal(header, body, footer, meuModal) {
         if (meuModal == 'meuModalSucesso' || meuModal == '.meuModalSucesso') {
             meuModal = '#meuModalSucesso';
@@ -99,7 +86,7 @@
             } else {
                 $('#bodyMeuModalErro').html('');
             }
-            if (footer != null && footer != '') {
+            if (footer != null && footer != '') {                
                 $('#footerMeuModalErro').html(footer);
             } else {
                 $('#footerMeuModalErro').html('<button name="ok" type="button" data-dismiss="modal" class="btn btn-danger"><span class="glyphicon glyphicon-ok"></span> Ok</button>');
@@ -110,5 +97,19 @@
         
         return true;
     }    
+
+    <?php  
+        $modal = $this->session->userdata('modal');
+        if ($modal != null && $modal != '') {                                
+            $header = $this->session->userdata('header');
+            $body = $this->session->userdata('body');
+            $footer = $this->session->userdata('footer');            
+            $this->session->unset_userdata('modal');
+            $this->session->unset_userdata('header');
+            $this->session->unset_userdata('body');
+            $this->session->unset_userdata('footer');
+    ?>        
+        chamarModal('<?php echo $header ?>', '<?php echo $body ?>', '<?php echo $footer ?>', '<?php echo $modal ?>');      
+    <?php } ?>
 
 </script>
