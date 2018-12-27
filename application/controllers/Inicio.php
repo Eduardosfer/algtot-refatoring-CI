@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Description of Inicio
+ * Description of MY_Controller
  *
  * @author Eduardo Sfer
  */
