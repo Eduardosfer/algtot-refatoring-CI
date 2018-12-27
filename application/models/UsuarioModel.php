@@ -29,7 +29,7 @@ class UsuarioModel extends MY_Model {
 		if ($orderBy != null && $orderBy != '') {
 			$this->db->order_by($orderBy);
 		}
-		$object = $this->db->get($this->table, $limit, $amount);
+		$object = $this->db->get($this->table, $limit, $amount);		
 		return $object->result();
 	}
 }

@@ -28,6 +28,8 @@ class MY_Controller extends CI_Controller {
 				$method = strtolower($this->router->method);
 				$cdGrupo = $this->session->userdata('cdGrupo');
 				if ($this->checkPermission($controller, $method, $cdGrupo) === false) {
+					var_dump($controller);
+					var_dump($method);
 					//VOLTAR A PÁGINA ANTERIOR E INFORMAR QUE AO USUÁRIO QUE NÃO TEM PERMISSÃO PARA ACESSAR $controller/$method
 				}
 			} else {				

@@ -2,18 +2,20 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Description of Usuario
+ * Description of AlgTot
  *
  * @author Eduardo Sfer
  */
-class Usuario extends MY_Controller {		
+class AlgTot extends MY_Controller {		
 
 	public function __construct() {
 		parent::__construct();		
 	}
 
 	public function index() {				
-		//
+		$cdGrupo = $this->session->userdata('cdGrupo');
+		var_dump($cdGrupo);
+		die;
 	}	
 	
 }
