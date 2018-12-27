@@ -9,12 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class AlgTot extends MY_Controller {		
 
 	public function __construct() {
-		parent::__construct();		
+		parent::__construct();				
 	}
 
-	public function index() {				
+	public function index() {
 		$cdGrupo = $this->session->userdata('cdGrupo');
-		var_dump($cdGrupo);
+		echo 'Chegou aqui mano';
 		die;
 	}	
 	

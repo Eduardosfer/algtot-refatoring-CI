@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller {	
 
 	protected $dados = array();
+	protected $mainPage = 'mainPage';
 	protected $mensagem = '';
 	protected $urlBack = '';
 
@@ -17,8 +18,8 @@ class MY_Controller extends CI_Controller {
 		$this->autenticar();
 	}
 
-	public function index() {				
-		// 
+	public function index() {
+		//
 	}
 
 	public function autenticar() {
@@ -26,11 +27,13 @@ class MY_Controller extends CI_Controller {
 			$controller = strtolower($this->router->class);
 			if ($controller != 'inicio' && $controller != null) {
 				$method = strtolower($this->router->method);
-				$cdGrupo = $this->session->userdata('cdGrupo');
-				if ($this->checkPermission($controller, $method, $cdGrupo) === false) {
-					var_dump($controller);
-					var_dump($method);
+				if ($this->checkPermissao($controller, $method) === false) {
 					//VOLTAR A PÁGINA ANTERIOR E INFORMAR QUE AO USUÁRIO QUE NÃO TEM PERMISSÃO PARA ACESSAR $controller/$method
+					$this->util->setModalRedirecionar('Aviso de permissão', 'Você não tem permissão para acessar '.$controller.'/'.$method, '', 'meuModalErro', $this->urlBack);
+					//DESENVOLVER UMA FUNÇÃO QUE PEGA A PÁGINA ANTERIOR					
+				} else {
+					//TEM PERMISSÃO E POR ISSO PODE USAR O CONTROLE E METODO NORMALMENTE
+					return true;
 				}
 			} else {				
 				$this->mostrarTelaApresentacao();
@@ -53,16 +56,22 @@ class MY_Controller extends CI_Controller {
 	}
 
 	public function verificarLogado() {
-		if ($this->session->userdata('logado') === true) {
+		if ($this->session->userdata('usuarioLogado') === true) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public function checkPermission($controller = null, $method = null, $cdGrupo = null) {
-		$return = false; 
-
+	public function checkPermissao($controller = null, $method = null) {
+		$return = false;
+		$permissoes = $this->session->userdata('permissoes');
+		foreach ($permissoes as $permissao) {
+			if (strtolower($permissao->classe) == $controller && strtolower($permissao->metodo) == $method) {
+				$return = true;
+				break;
+			}			
+		}		
 		return $return;
 	}
 }

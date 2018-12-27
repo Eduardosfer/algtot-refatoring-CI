@@ -51,14 +51,14 @@ class Inicio extends MY_Controller {
 		$post = $this->input->post();
 		$this->load->model('UsuarioModel');
 		$where = array('usuario' => $post['usuario'], 'senha' => md5($post['senha']), 'status !=' => 'deletado');
-		$usuario = $this->UsuarioModel->getOneData($where);		
-		if (!isset($usuario->status)) {			
+		$usuario = $this->UsuarioModel->getOneData($where);
+		if (!isset($usuario->status)) {
 			$this->util->setModalRedirecionar('', 'Usuário ou senha invalidos.', '', 'meuModalErro', $this->urlBack);
 		} else {			
 			if ($usuario->status == 'inativo' || $usuario->status == null) {
 				$this->util->setModalRedirecionar('Usuário ainda não liberado', 'Você ainda não tem acesso ao Algtot, aguarde a liberação de acesso do seu usuário.', '', 'meuModalErro', $this->urlBack);
 			}
-			if ($usuario->status == 'ativo') {				
+			if ($usuario->status == 'ativo') {
 				if ($usuario->primeiroLogin == 'sim' && $usuario->cdGrupo == 3) {
 					$this->UsuarioModel->updateData(array('primeiroLogin' => 'nao'), array('cdUsuario' => $usuario->cdUsuario));                    										
 					$usuario->primeiroLogin = 'nao';

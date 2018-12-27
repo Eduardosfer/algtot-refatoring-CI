@@ -6,7 +6,7 @@
             
             <div class="modal-header" style="color: white!important; background-color: #4cae4c!important;">
                 <button type="button" class="close" data-toggle="modal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 id="headerMeuModalSucesso" class="modal-title">Sucesso!</h4>
+                <h4 id="headerMeuModalSucesso" class="modal-title">Sucesso</h4>
             </div>
 
             <div class="modal-body">
@@ -28,7 +28,7 @@
             
             <div class="modal-header" style="color: white!important; background-color: #d43f3a!important;">
                 <button type="button" class="close" data-toggle="modal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 id="headerMeuModalErro" class="modal-title">Erro!</h4>
+                <h4 id="headerMeuModalErro" class="modal-title">Aviso</h4>
             </div>
 
             <div class="modal-body">
@@ -62,7 +62,7 @@
             if (header != null && header != '') {
                 $('#headerMeuModalSucesso').html(header);
             } else {
-                $('#headerMeuModalSucesso').html('Sucesso!');
+                $('#headerMeuModalSucesso').html('Sucesso');
             }
             if (body != null && body != '') {
                 $('#bodyMeuModalSucesso').html(body);
@@ -79,7 +79,7 @@
             if (header != null && header != '') {
                 $('#headerMeuModalErro').html(header);
             } else {
-                $('#headerMeuModalErro').html('Erro!');
+                $('#headerMeuModalErro').html('Aviso');
             }
             if (body != null && body != '') {
                 $('#bodyMeuModalErro').html(body);
