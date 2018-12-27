@@ -7,9 +7,7 @@ class Auth extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		
-		$this->autenticar();		
-		
+		$this->autenticar();
 	}
 
 	public function index() {				
@@ -29,8 +27,8 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	public function mostrarTelaApresentacao() {
-		$this->load->model('UsuariosModel');			
+	public function mostrarTelaApresentacao() {		
+		$this->load->model('UsuariosModel');
 		$fields = null;
 		$where = array('usuario.status' => 'ativo', 'usuario.cdGrupo' => 3);
 		$limit = 0;

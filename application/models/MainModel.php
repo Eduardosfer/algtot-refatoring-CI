@@ -1,19 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UsuariosModel extends MainModel {	
+class MainModel extends CI_Model {	
 	
-	protected $table = 'usuario';	
+	protected $table = '';
 
 	public function __construct() {
 		parent::__construct();
 	}
 
-	public function getData($where = null, $fields = null, $limit = null, $amount = null, $orderBy = null, $groupBy = null) {			
+	public function insertData($data = null) {
+		//
+	}
+
+	public function getData($where = null, $fields = null, $limit = null, $amount = null, $orderBy = null, $groupBy = null) {		
 		if ($fields != null && $fields != '') {
 			$this->db->select($fields);
-		}
-		$this->db->join('grupo', "grupo.cdGrupo = $this->table.cdGrupo", 'LEFT');
+		}		
 		if ($where != null && $where != '') {
 			$this->db->where($where);
 		}
@@ -22,8 +25,16 @@ class UsuariosModel extends MainModel {
 		}
 		if ($orderBy != null && $orderBy != '') {
 			$this->db->order_by($orderBy);
-		}
+		}		
 		$object = $this->db->get($this->table, $limit, $amount);
 		return $object->result();
+	}
+
+	public function updateData($data = null, $where = null) {
+		//
+	}
+
+	public function deleteData($where = null) {
+		//
 	}
 }
